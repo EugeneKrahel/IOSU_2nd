@@ -6,7 +6,6 @@ create or replace NONEDITIONABLE PACKAGE pack IS
 PROCEDURE orders_current_month;
 
 -- Add a function
-FUNCTION check_valid_month (selected_month VARCHAR2) RETURN boolean;
 
 FUNCTION money_of_month (selected_month VARCHAR2) RETURN NUMBER;
 
@@ -212,7 +211,7 @@ END pack;
 BEGIN
     dbms_output.put_line('Процедура нормальная:');
     pack.orders_current_month;
-    INSERT INTO orders(ord_date,cl_id,w_id) VALUES (to_date('15.11.21 05:03', 'dd.mm.yy hh24:mi'),8,7);
+    INSERT INTO orders(ord_date,cl_id,w_id) VALUES (to_date('16.11.21 05:03', 'dd.mm.yy hh24:mi'),8,7);
     COMMIT;
     dbms_output.put_line('Процедура (если в текущем месяце новый заказ, то он допишется, если поменялся текущий месяц, то будут новые данные, потому что зачем нам старые):');
     pack.orders_current_month;
@@ -220,8 +219,10 @@ BEGIN
     dbms_output.put_line('Функция + локалка:');
     dbms_output.put_line('Деньги за октябрь: ');
     dbms_output.put_line(pack.money_of_month('october'));
+    dbms_output.put_line(pack.money_of_month('ocbr'));
 
     dbms_output.put_line('Перегруз: ');
     dbms_output.put_line(pack.money_of_good_in_month('october', 'I2zod'));
+    dbms_output.put_line(pack.money_of_good_in_month('october', 'Izod'));
 END;
 /
