@@ -163,7 +163,7 @@ end;
 /
 
 begin
-    INSERT INTO  VALUES(goods_seq.nextval,'Ecko Unlimited',35,142);
+    INSERT INTO goods VALUES(goods_seq.nextval,'Ecko Unlimited',35,142);
     INSERT INTO goods VALUES(goods_seq.nextval,'Six Deuce',58,148);
     INSERT INTO goods VALUES(goods_seq.nextval,'Dollie',63,86);
     INSERT INTO goods VALUES(goods_seq.nextval,'Ethika',21,141);
